@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wcaaotr.community.dao.UserMapper">
+    <insert id="insertUser" parameterType="com.wcaaotr.community.entity.User">
+        insert into user (username, password, salt, email, type, header_url, create_time)
+        values (#{username}, #{password}, #{salt}, #{email}, #{type}, #{headerUrl}, #{createTime})
+    </insert>
+    <update id="updatePasswordById">
+        update user
+        set password=#{password}
+        where id=#{id}
+    </update>
+    <update id="updateHeaderUrlById">
+        update user
+        set header_url=#{headerUrl}
+        where id=#{id}
+    </update>
+
+    <select id="selectUserById" resultType="com.wcaaotr.community.entity.User">
+        select id, username, password, salt, email, type, header_url, create_time
+        from user
+        where id = #{id}
+    </select>
+    <select id="selectUserByName" resultType="com.wcaaotr.community.entity.User">
+        select id, username, password, salt, email, type, header_url, create_time
+        from user
+        where username = #{username}
+    </select>
+</mapper>

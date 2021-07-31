@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wcaaotr.community.dao.DiscussPostMapper">
+
+    <insert id="insertDiscussPost" parameterType="com.wcaaotr.community.entity.DiscussPost">
+        insert into discuss_post(user_id, title, content, type, status, create_time, comment_count, score)
+        values (#{userId}, #{title}, #{content}, #{type}, #{status}, #{createTime}, #{commentCount}, #{score})
+    </insert>
+    <update id="updateCommentCount">
+        update discuss_post set comment_count=#{count} where id=#{id}
+    </update>
+    <update id="updateType">
+        update discuss_post set type=#{type} where id=#{id}
+    </update>
+    <update id="updateStatus">
+        update discuss_post set status=#{status} where id=#{id}
+    </update>
+    <update id="updateScore">
+        update discuss_post set score=#{score} where id=#{id}
+    </update>
+
+    <select id="selectDiscussPostById" resultType="com.wcaaotr.community.entity.DiscussPost">
+        select id, user_id, title, content, type, status, create_time, comment_count, score
+        from discuss_post
+        where id = #{id} and status != 2
+        order by type desc, create_time desc
+    </select>
+    <select id="selectDiscussPosts" resultType="com.wcaaotr.community.entity.DiscussPost">
+        select id, user_id, title, content, type, status, create_time, comment_count, score
+        from discuss_post
+        where status != 2
+        <if test="orderMode==0">
+            order by type desc, create_time desc
+        </if>
+        <if test="orderMode==1">
+            order by type desc, score desc, create_time desc
+        </if>
+    </select>
+
+</mapper>
