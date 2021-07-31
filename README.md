@@ -1,6 +1,6 @@
 # communitydemo
-SpringBoot
-MyBatis
-Redis
-Kafka
+SpringBoot  
+MyBatis  
+Redis  
+Kafka  
 Caffeine
