@@ -2,7 +2,7 @@
 community:
   path:
     domain: http://localhost:8080
-    upload: F:\IdeaProjects\communitydemo\upload
+    upload: path
 server:
   port: 8080
   servlet:
