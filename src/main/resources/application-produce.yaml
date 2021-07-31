@@ -2,7 +2,7 @@
 community:
   path:
     domain: http://192.168.55.203
-    upload: /home/wangcongao/bushu/upload
+    upload: path
 server:
   port: 8080
   servlet:
@@ -18,7 +18,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/community?userSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
-    password: 20S103223
+    password: 123456
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
       maximum-pool-size: 15
